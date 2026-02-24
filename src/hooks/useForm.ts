@@ -5,10 +5,10 @@ export const useForm = (initialForm: any = {}) => {
     const [formState, setFormState] = useState(initialForm);
 
     const onInputChange = ({target}: SyntheticEvent) => {
-        const {name, value} = target as HTMLInputElement;
+        const {name, value, type, checked} = target as HTMLInputElement;
         setFormState({
             ... formState,
-            [name] : value
+            [name] : type === 'checkbox' ? checked : value
         })
     }
 
